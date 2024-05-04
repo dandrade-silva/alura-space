@@ -1,6 +1,14 @@
 {% load static %}
 
+
 <div class="pagina-inicial">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
     <header class="cabecalho">
         <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Logo da Alura Space" />
         <div class="cabecalho__busca">

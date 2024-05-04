@@ -18,6 +18,13 @@
 
 <body>
     <div class="pagina-inicial">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
         <header class="cabecalho">
             <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Logo da Alura Space" />
             <div class="cabecalho__busca">
@@ -41,7 +48,7 @@
                 </nav>
             </section>
             <section class="galeria" style="margin-left: 5em">
-                <form action="" method="">
+                <form action="{% url 'login' %}" method="POST">
                     {% csrf_token %}
                     <div class="row">
                         {% for field in form.visible_fields %}
